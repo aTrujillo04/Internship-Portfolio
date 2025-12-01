@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octopy Internship Repos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #08237e 0%, #1fa6cf 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .repos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .repo-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .repo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .repo-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .repo-content {
+            padding: 20px;
+        }
+
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .repo-title {
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .repo-title:hover {
+            color: #667eea;
+        }
+
+        .repo-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-revision {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-wip {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .repo-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .repo-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .repo-link:hover {
+            background: #5568d3;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .repos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Octopy Internship Portfolio</h1>
+            <p class="subtitle">Robotics and Automation projects made by Antonio Trujillo Rosas</p>
+            <p class="subtitle">(August - December 2025)</p>
+        </header>
+
+        <div class="repos-grid" id="reposContainer"></div>
+    </div>
+
+    <script>
+        // Sample repository data - Replace this with your actual repositories
+        const repositories = [
+            {
+                title: "Fruit slot machine",
+                description: "Fruit slot machiine designed to win 6 different prices with different possibilities. The machine is activated by a lever.",
+                link: "https://github.com/aTrujillo04/Demo-for-fruit-slot-machine-in-HTML.git",
+                image: "Projects/slotma.png",
+                status: "Finished"
+            },
+            {
+                title: "Remote Dashboard for Tokinomo (Flet/FLask)",
+                description: "Dashboard designed with the Flet framework to control a promotional Tokinomo and its features.",
+                link: "https://github.com/aTrujillo04/Remote-Dashboard-for-Tokinomo-in-Flet.git",
+                image: "Projects/fflapl.png",
+                status: "Finished"
+            },
+            {
+                title: "Remote Dashboard for Tokinomo (HTML/FastAPI)",
+                description: "Simple web application built with HTML and FastAPI to control a Tokinomo device running on a Raspberry Pi 5. The system communicates through REST APIs, and the frontend uses the Fetch API to send commands to the backend. ",
+                link: "https://github.com/aTrujillo04/Tokinomo-control-with-html-and-fastapi.git",
+                image: "Projects/api.png",
+                status: "active"
+            },
+            {
+                title: "ANPR System for license plate detection and extraction",
+                description: "Vehicle license plate detection and extraction system using a YOLOv11 model trained with a custom dataset from Roboflow and integrated OCR (Optical Character Recognition) through PaddleOCR. ",
+                link: "https://github.com/aTrujillo04/License-plate-detection-and-extraction.git",
+                image: "Projects/lice.png",
+                status: "Finished"
+            },
+            {
+                title: "Drawing labels extraction with PaddleOCR",
+                description: "PaddleOCR model specialized in extracting labels and annotations from architectural blueprints. It outputs the identified text and the precise pixel coordinates (x y) of the bounding box's top-left corner.",
+                link: "https://github.com/aTrujillo04/Draws-extraction-with-PaddleOCR.git",
+                image: "Projects/draw.png",
+                status: "wip"
+            },
+            {
+                title: "Web Apps Introductory videos",
+                description: "Introductory videos for Web Applications with examples and a simple implementation. ",
+                link: "https://drive.google.com/drive/folders/1YudsW8Gk63sT19-gcDq4_-Q6-3RdfczR?usp=drive_link",
+                image: "Projects/holam.png",
+                status: "Finished"
+            }
+            
+        ];
+
+        function getStatusClass(status) {
+            const statusMap = {
+                'active': 'status-active',
+                'revision': 'status-revision',
+                'wip': 'status-wip',
+                'finished' : 'status-finished'
+            };
+            return statusMap[status] || 'status-active';
+        }
+
+        function getStatusLabel(status) {
+            const labelMap = {
+                'active': 'Active',
+                'revision': 'Under Revision',
+                'wip': 'In Progress',
+                'Finished' : 'Finished'
+            };
+            return labelMap[status] || 'Active';
+        }
+
+        function renderRepositories() {
+            const container = document.getElementById('reposContainer');
+            
+            repositories.forEach(repo => {
+                const card = document.createElement('div');
+                card.className = 'repo-card';
+                
+                card.innerHTML = `
+                    <img src="${repo.image}" alt="${repo.title}" class="repo-image">
+                    <div class="repo-content">
+                        <div class="repo-header">
+                            <a href="${repo.link}" target="_blank" class="repo-title">${repo.title}</a>
+                            <span class="repo-status ${getStatusClass(repo.status)}">${getStatusLabel(repo.status)}</span>
+                        </div>
+                        <p class="repo-description">${repo.description}</p>
+                        <a href="${repo.link}" target="_blank" class="repo-link">View the project →</a>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Render repositories on page load
+        renderRepositories();
+    </script>
+</body>
+</html>
